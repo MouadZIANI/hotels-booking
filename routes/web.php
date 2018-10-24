@@ -11,24 +11,28 @@
 |
 */
 
+Route::get('/', function () {
+	return view('front.layouts.master');
+});
 
 Route::get('/bcrypt/{password}', function ($password) {
 	return bcrypt($password);
 });
 
+
+
+
+
 Auth::routes();
+
+
+
+
 
 Route::group(['middleware' => 'auth'], function () 
 {
-	Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/posts', 'PostController@index')->name('posts');
-	Route::get('/prefrred_posts', 'LikedPostController@index')->name('prefrred_posts');
-	
-	Route::post('/posts/like', 'PostController@like');
-	Route::post('/posts/dislike', 'PostController@dislike');
-
-	Route::get('/getAllPosts', 'PostController@getAllPosts');
-	Route::get('/getPreferredPosts', 'LikedPostController@getPreferredPosts');
-
-	Route::delete('/remove_preffered_post/{$id}', 'LikedPostController@destroy');
+	Route::get('/bookings', function ()
+	{
+		return view('backend.bookings.index');
+	});
 });
