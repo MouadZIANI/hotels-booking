@@ -1,0 +1,132 @@
+﻿/*
+  Docs at http://http://simpleweatherjs.com
+
+  Look inspired by http://www.degreees.com/
+  Used for demo purposes.
+
+  Weather icon font from http://fonts.artill.de/collection/artill-weather-icons
+
+  DO NOT hotlink the assets/font included in this demo. If you wish to use the same font icon then download it to your local assets at the link above. If you use the links below odds are at some point they will be removed and your version will break.
+*/
+
+@font-face {
+    font-family: 'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#weather {
+  width: 100%;
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#weather i {
+  font-family: weather;
+  font-size: 150px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+  text-transform: none;
+}
+
+.weathericon-0:before { content: ":"; }
+.weathericon-1:before { content: "p"; }
+.weathericon-2:before { content: "S"; }
+.weathericon-3:before { content: "Q"; }
+.weathericon-4:before { content: "S"; }
+.weathericon-5:before { content: "W"; }
+.weathericon-6:before { content: "W"; }
+.weathericon-7:before { content: "W"; }
+.weathericon-8:before { content: "W"; }
+.weathericon-9:before { content: "I"; }
+.weathericon-10:before { content: "W"; }
+.weathericon-11:before { content: "I"; }
+.weathericon-12:before { content: "I"; }
+.weathericon-13:before { content: "I"; }
+.weathericon-14:before { content: "I"; }
+.weathericon-15:before { content: "W"; }
+.weathericon-16:before { content: "I"; }
+.weathericon-17:before { content: "W"; }
+.weathericon-18:before { content: "U"; }
+.weathericon-19:before { content: "Z"; }
+.weathericon-20:before { content: "Z"; }
+.weathericon-21:before { content: "Z"; }
+.weathericon-22:before { content: "Z"; }
+.weathericon-23:before { content: "Z"; }
+.weathericon-24:before { content: "E"; }
+.weathericon-25:before { content: "E"; }
+.weathericon-26:before { content: "3"; }
+.weathericon-27:before { content: "a"; }
+.weathericon-28:before { content: "A"; }
+.weathericon-29:before { content: "a"; }
+.weathericon-30:before { content: "A"; }
+.weathericon-31:before { content: "6"; }
+.weathericon-32:before { content: "1"; }
+.weathericon-33:before { content: "6"; }
+.weathericon-34:before { content: "1"; }
+.weathericon-35:before { content: "W"; }
+.weathericon-36:before { content: "1"; }
+.weathericon-37:before { content: "S"; }
+.weathericon-38:before { content: "S"; }
+.weathericon-39:before { content: "S"; }
+.weathericon-40:before { content: "M"; }
+.weathericon-41:before { content: "W"; }
+.weathericon-42:before { content: "I"; }
+.weathericon-43:before { content: "W"; }
+.weathericon-44:before { content: "a"; }
+.weathericon-45:before { content: "S"; }
+.weathericon-46:before { content: "U"; }
+.weathericon-47:before { content: "S"; }
+
+#weather h4 {
+  margin: 0 0 8px;
+  font-size: 100px;
+  font-weight: normal;
+  text-align: center;
+}
+
+#weather ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  text-align:center;
+}
+
+#weather li {
+  background: #fff;
+  background: rgba(0,0,0,0.1);
+  padding: 20px;
+  display: inline-block;
+  border-radius: 5px;
+  margin-bottom:10px;
+  margin-left:5px;
+  margin-right:5px;
+}
+
+
+
+
+span.details_forecast {
+	border:2px solid rgba(0,0,0,0.1);
+	display:inline-block;
+	text-align:center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom:10px;
+  margin:0 3px;
+  white-space:nowrap;
+  margin-bottom:6px;
+  min-width:100px;
+}
+/* Mobile Landscape */
+@media (max-width: 600px) {
+	#weather h4 {font-size: 60px;}
+	#weather i { font-size: 100px;}
+}

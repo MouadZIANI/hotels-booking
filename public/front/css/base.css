@@ -1,0 +1,10 @@
+/* General import css styles*/
+@import url("bootstrap.min.css"); 						 /* Main Bootstrap */
+@import url("animate.min.css");							/* Animate On Page Scroll */
+@import url("style.css");										/* Main theme styles */
+@import url("menu.css");										/* Menu styles */
+@import url("responsive.css");								/* Responsive */
+@import url("fontello/css/icon_set_1.css");		/* Icon pack */
+@import url("fontello/css/icon_set_2.css");		/* Icon pack */
+@import url("fontello/css/fontello.css");			/* Icon pack */
+@import url("magnific-popup.css");					/* Lightbox & dialog script */
