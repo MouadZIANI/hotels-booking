@@ -160,7 +160,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        //Kerlove
+        //Krlove
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
 
     ],

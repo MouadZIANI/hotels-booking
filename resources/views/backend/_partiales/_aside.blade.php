@@ -2,52 +2,38 @@
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset('images/logo.jpg') }}" height="100" width="44" height="44" class="img-circle" style="height: 44px; max-width: 45px;" alt="User Image">
+                <img src="{{ asset('backend/images/logo.jpg') }}" height="100" width="44" height="44" class="img-circle" style="height: 44px; max-width: 45px;" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>{{ ucfirst(Auth::user()->name) }}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Connecter </a>
+                <a href="#"><i class="fa fa-circle text-success"></i> Coonected </a>
             </div>
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
-
-            <li class="treeview {{ (Request::is('eleves') || Request::is('eleves/create')) ? 'active menu-open' : '' }}">
+            <li class="treeview {{ (Request::is('admin/bookings') || Request::is('admin/bookings/create')) ? 'active menu-open' : '' }}">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Etudiants</span>
+                    <i class="fa fa-dashboard"></i> <span>Bookings</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(Request::is('eleves')) class="active" @endif ><a href="{{ route('eleves.index') }}"><i class="fa fa-circle-o"></i>Liste des etudiants</a></li>
-                    <li @if(Request::is('eleves/create')) class="active" @endif ><a href="{{ route('eleves.create') }}"><i class="fa fa-circle-o"></i>Nouvel etudiants</a></li>
+                    <li @if(Request::is('admin/bookings')) class="active" @endif ><a href="{{ route('bookings.index') }}"><i class="fa fa-circle-o"></i>All bookings</a></li>
+                    <li @if(Request::is('admin/bookings/create')) class="active" @endif ><a href="{{ route('bookings.create') }}"><i class="fa fa-circle-o"></i>New booking</a></li>
                 </ul>
             </li>
-
-            <li class="treeview {{ (Request::is('enseignants') || Request::is('enseignants/create')) ? 'active menu-open' : '' }}">
+            <li class="treeview {{ (Request::is('admin/clients') || Request::is('admin/clients/create')) ? 'active menu-open' : '' }}">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Enseignanats</span>
+                    <i class="fa fa-dashboard"></i> <span>Clients</span>
                     <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li @if(Request::is('enseignants')) class="active" @endif ><a href="{{ route('enseignants.index') }}"><i class="fa fa-circle-o"></i>Liste des enseignants</a></li>
-                    <li @if(Request::is('enseignants/create')) class="active" @endif ><a href="{{ route('enseignants.create') }}"><i class="fa fa-circle-o"></i>Nouvel enseignant</a></li>
+                    <li @if(Request::is('admin/clients')) class="active" @endif ><a href="{{ route('clients.index') }}"><i class="fa fa-circle-o"></i>All clients</a></li>
+                    <li @if(Request::is('admin/clients/create')) class="active" @endif ><a href="{{ route('clients.create') }}"><i class="fa fa-circle-o"></i>New client</a></li>
                 </ul>
-            </li>
-
-            <li  class="{{ (Request::is('devoires')) ? 'active' : '' }}">
-                <a class="{{ (Request::is('devoires')) ? 'active menu-open' : '' }}" href="{{ route('devoires.index') }}"><i class="fa fa-dashboard"></i> <span>Devoires</span></a>
-            </li>
-
-            <li class="{{ (Request::is('examens')) ? 'active' : '' }}">
-                <a class="{{ (Request::is('examens')) ? 'active menu-open' : '' }}" href="{{ route('examens.index') }}"><i class="fa fa-dashboard"></i> <span>Examens</span></a>
-            </li>
-
-            <li class="{{ (Request::is('absences')) ? 'active' : '' }}">
-                <a class="{{ (Request::is('absences')) ? 'active menu-open' : '' }}" href="{{ route('absences.index') }}"><i class="fa fa-dashboard"></i> <span>Absence</span></a>
             </li>
     </section>
 </aside>

@@ -16,11 +16,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $created_at
  * @property string $updated_at
  * @property Booking[] $bookings
+ * @property LineBooking[] $lineBookings
  */
 class User extends Authenticatable
 {
     use Notifiable;
-    
     /**
      * @var array
      */
@@ -32,5 +32,13 @@ class User extends Authenticatable
     public function bookings()
     {
         return $this->hasMany('App\Booking', 'client_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function lineBookings()
+    {
+        return $this->hasMany('App\LineBooking', 'client_id');
     }
 }

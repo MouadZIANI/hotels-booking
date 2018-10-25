@@ -90,6 +90,10 @@ hr {
   border: 0;
   border-top: 1px solid #ddd;
 }
+.btn__full {
+	margin-top: 25px !important;
+	padding: 7px 20px !important;
+}
 /*-------- 1.2 Buttons --------*/
 a.btn_full, .btn_full{
 	border: none;
@@ -453,7 +457,7 @@ input#email_newsletter_2.form-control{
 }
 #booking_container {
     position: relative;
-    height: 650px;
+    height: 500px;
 	padding-top:130px;
     background: #ccc url(../img/slide_hero.jpg) no-repeat center top;
     background-size: cover;
@@ -461,7 +465,10 @@ input#email_newsletter_2.form-control{
 	width: 100%;
 	z-index:99;
 }
+
+
 #book {
+	margin-top: 100px;
 	background: rgba(0, 0, 0, 0.6);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000, endColorstr=#7f000000);
 	/* Explorer 8 */

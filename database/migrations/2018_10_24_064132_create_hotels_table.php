@@ -16,11 +16,14 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('zip_code');
-            $table->string('city');
-            $table->text('adress');
+            $table->string('tel');
             $table->integer('stars');
+            $table->string('zip_code');
+            $table->text('adress');
+            $table->text('description');
             $table->boolean('etat')->default(true);
+            $table->integer('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }

@@ -15,10 +15,9 @@ class CreateHotelsRooms extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('description');
-            $table->boolean('etat')->default(true);
-            $table->integer('hotel_id')->unsigned()->nullable();
-            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->text('number');
+            $table->integer('room_type_id')->unsigned()->nullable();
+            $table->foreign('room_type_id')->references('id')->on('room_types');
             $table->timestamps();
         });
     }

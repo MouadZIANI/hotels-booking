@@ -16,8 +16,8 @@ class CreateHotelsRoomImages extends Migration
         Schema::create('room_images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
-            $table->integer('room_id')->unsigned()->nullable();
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->integer('room_type_id')->unsigned()->nullable();
+            $table->foreign('room_type_id')->references('id')->on('room_types');
             $table->timestamps();
         });
     }
