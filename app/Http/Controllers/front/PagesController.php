@@ -55,26 +55,25 @@ class PagesController extends Controller
     	$client = User::where('email', $request->email_booking)->first();
     	if(!$client) {
             $request->validate([
-                'start_date' => 'required|date',
-                'end_date' => 'required|date',
-                'nbr_rooms' => 'required|numeric',
-                'name_booking' => 'required|max:50|min:5',
-                'email_booking' => 'required|email|unique:users',
-                'tel_booking' => 'required|max:50|min:10'
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'name' => 'required|max:50|min:5',
+                'email' => 'required|email|unique:users',
+                'tel' => 'required|max:50'
             ]);
 
 	    	$client = new User;
-	    	$client->name = $request->name_booking;
-	    	$client->email = $request->email_booking;
+	    	$client->name = $request->name;
+	    	$client->email = $request->email;
 	    	$client->password_client = $password;
 	    	$client->password = bcrypt($password);
-	    	$client->tel = $request->tel_booking;
+	    	$client->tel = $request->tel;
 	    	$client->save();
     	} else {
             $request->validate([
-                'start_date' => 'required|date',
-                'end_date' => 'required|date',
-                'nbr_rooms' => 'required|numeric'
+                'start_date' => 'required',
+                'end_date' => 'required',
+                'nbr_rooms' => 'required'
             ]);
         }
 

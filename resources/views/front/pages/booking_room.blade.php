@@ -33,18 +33,18 @@
                     <div class="sp-slides">
                         <div class="sp-slide">
                             @foreach($room->roomImages as $image)
-                                <img alt="" class="sp-image" src="../src/css/images/blank.gif" 
-                                data-src="{{ asset('front/img/' . $image->image) }}" 
-                                data-small="{{ asset('front/img/' . $image->image) }}" 
-                                data-medium="{{ asset('front/img/' . $image->image) }}" 
-                                data-large="{{ asset('front/img/' . $image->image) }}" 
-                                data-retina="{{ asset('front/img/' . $image->image) }}">
+                                <img alt="" class="sp-image" src="{{ asset($image->image) }}" 
+                                data-src="{{ asset($image->image) }}" 
+                                data-small="{{ asset($image->image) }}" 
+                                data-medium="{{ asset($image->image) }}" 
+                                data-large="{{ asset($image->image) }}" 
+                                data-retina="{{ asset($image->image) }}">
                             @endforeach()
                         </div>
                     </div>
                     <div class="sp-thumbnails">
                         @foreach($room->roomImages as $image)
-                            <img alt="" class="sp-thumbnail" src="{{ asset('front/img/' . $image->image) }}">
+                            <img alt="" class="sp-thumbnail" src="{{ asset($image->image) }}">
                         @endforeach()
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
                                 <label>End date</label>
-                               <input class="date-pick form-control" data-date-format="yyyy-mm-dd" type="text" id="end_date" name="end_date" placeholder="Check out">
+                               <input class="date-pick form-control" value="{{ old('end_date') }}" data-date-format="yyyy-mm-dd" type="text" id="end_date" name="end_date" placeholder="Check out">
                                <span class="input-icon"><i class=" icon-calendar"></i></span>
                                @if ($errors->has('end_date'))
                                     <span class="help-block">
@@ -98,7 +98,7 @@
                                 <label>Rooms</label>
                                 <div class="qty-buttons">
                                     <input type="button" value="-" class="qtyminus" name="rooms_count">
-                                    <input type="text" name="rooms_count" value="1" class="qty form-control" placeholder="0">
+                                    <input type="text" name="rooms_count"  value="{{ old('rooms_count', 1) }}" class="qty form-control" placeholder="0">
                                     <input type="button" value="+" class="qtyplus" name="rooms_count">
                                 </div>
                                 @if ($errors->has('rooms_count'))
@@ -112,34 +112,34 @@
                     
                     <div class="row">
                             <div class="col-md-12 col-sm-6">
-                                <div class="form-group{{ $errors->has('name_booking') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" name="name_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->name }}" disabled @endif() id="name_booking" placeholder="Name and Last name">
-                                    @if ($errors->has('name_booking'))
+                                    <input type="text" class="form-control" value="{{ old('name') }}" name="name" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->name }}" disabled @endif() id="name" placeholder="Name and Last name">
+                                    @if ($errors->has('name'))
                                         <span class="help-block">
-                                            {{ $errors->first('name_booking') }}
+                                            {{ $errors->first('name') }}
                                         </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-6">
-                                <div class="form-group{{ $errors->has('email_booking') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" name="email_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->email }}" disabled @endif() id="email_booking" placeholder="Your email">
-                                    @if ($errors->has('rooms_count'))
+                                    <input type="text" class="form-control" value="{{ old('email') }}" name="email" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->email }}" disabled @endif() id="email" placeholder="Your email">
+                                    @if ($errors->has('email'))
                                         <span class="help-block">
-                                            {{ $errors->first('email_booking') }}
+                                            {{ $errors->first('email') }}
                                         </span>
                                     @endif
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group{{ $errors->has('tel_booking') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}">
                                     <label>Tel</label>
-                                    <input type="text" class="form-control" name="tel_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->tel }}" disabled @endif() placeholder="Your Phone number">
-                                    @if ($errors->has('rooms_count'))
+                                    <input type="text" class="form-control" value="{{ old('tel') }}" name="tel" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->tel }}" disabled @endif() placeholder="Your Phone number">
+                                    @if ($errors->has('tel'))
                                         <span class="help-block">
-                                            {{ $errors->first('rooms_count') }}
+                                            {{ $errors->first('tel') }}
                                         </span>
                                     @endif
                                 </div>

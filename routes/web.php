@@ -1,4 +1,6 @@
 <?php
+use App\Hotel;
+use App\RoomType;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +28,16 @@ Route::get('/contacts', 'front\PagesController@contacts')->name('contacts');
 // Auth routes
 Auth::routes();
 
-Route::get('/send', function () {
-	return sendMail(['content' => 'content', 'to' => 'madrigado8@gmail.com']);  
+Route::get('/insert', function () {
+	$rooms = RoomType::all();
+	foreach ($rooms as $key => $room) {
+		for ($i=4; $i >= 1; $i--) { 
+			DB::table('room_images')->insert(
+			    ['image' => "front/images/rooms/" . $i . ".jpg", 'room_type_id' => $room->id, 'created_at' => '2018-10-25 20:35:03', 'updated_at' => '2018-10-25 20:35:03']
+			);
+		}
+	}
+	
 });
 
 // Backend routes

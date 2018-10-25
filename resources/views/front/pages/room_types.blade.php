@@ -32,17 +32,17 @@
                         <div class="sp-slide">
                             @foreach($hotel->hotelsImages as $image)
                                 <img alt="" class="sp-image" src="../src/css/images/blank.gif" 
-                                data-src="{{ asset('front/img/' . $image->image) }}" 
-                                data-small="{{ asset('front/img/' . $image->image) }}" 
-                                data-medium="{{ asset('front/img/' . $image->image) }}" 
-                                data-large="{{ asset('front/img/' . $image->image) }}" 
-                                data-retina="{{ asset('front/img/' . $image->image) }}">
+                                data-src="{{ asset($image->image) }}" 
+                                data-small="{{ asset($image->image) }}" 
+                                data-medium="{{ asset($image->image) }}" 
+                                data-large="{{ asset($image->image) }}" 
+                                data-retina="{{ asset($image->image) }}">
                             @endforeach()
                         </div>
                     </div>
                     <div class="sp-thumbnails">
                         @foreach($hotel->hotelsImages as $image)
-                            <img alt="" class="sp-thumbnail" src="{{ asset('front/img/' . $image->image) }}">
+                            <img alt="" class="sp-thumbnail" src="{{ asset($image->image) }}">
                         @endforeach()
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <div class="img_list">
                                     @if(isset($roomType->roomImages[0]))
-                                        <a href="{{ route('get-booking-rooms', ['id' => $roomType->id]) }}"><img src="{{ asset('front/img/' . $roomType->roomImages[0]->image) }}" alt=""></a>
+                                        <a href="{{ route('get-booking-rooms', ['id' => $roomType->id]) }}"><img src="{{ asset($roomType->roomImages[0]->image) }}" alt=""></a>
                                     @else
                                         <a href="{{ route('get-booking-rooms', ['id' => $roomType->id]) }}"><img src="{{ asset('front/img/room_list_1.jpg') }}" alt=""></a>
                                     @endif()
@@ -100,7 +100,7 @@
                                     <br>
                                     <h3><strong>{{ $roomType->name }}</strong></h3>
                                     <br>
-                                    <p>{{ $roomType->description }}</p>
+                                    <p>{{ substr($hotel->description, 0, 180) }}</p>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2">

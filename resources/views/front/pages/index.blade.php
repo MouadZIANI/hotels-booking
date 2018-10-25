@@ -101,12 +101,16 @@
                         <section class="box_cat_wp">
                         <div class="box_cat cat-hover">
                             <a href="{{ route('hotel-rooms', ['id' => $hotel->id]) }}" class="cat-overlay">
-                            <h2>{{ $hotel->name }} <span class="pull-right">{{ $hotel->stars }}<i class="icon-star-1"></i></span></h2>
-                            <p>{{ $hotel->description }}</p>
+                            <h2>{{ $hotel->name }}- {{ $hotel->city->name }} <span class="pull-right">{{ $hotel->stars }}<i class="icon-star-1"></i></span></h2>
+                            <p>{{ substr($hotel->description, 0, 180) }}</p>
                             <span class="box_cat_bt">Read more</span>
                             </a>
                             <div class="cat-img">
-                                <img src="{{ asset('front/img/room_1.jpg') }}" alt="">
+                                @if(isset($hotel->hotelsImages[0]))
+                                    <img src="{{ asset($hotel->hotelsImages[0]->image) }}" alt="">
+                                @else 
+                                    <img src="{{ asset('front/img/room_1.jpg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                         </section>
@@ -118,7 +122,6 @@
             </div>
         </div><!-- End container -->
     </div>
-        
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 nopadding">

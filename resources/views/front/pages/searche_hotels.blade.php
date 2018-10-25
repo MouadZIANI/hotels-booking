@@ -32,7 +32,7 @@
                         <div class="box_cat cat-hover">
                             <a href="{{ route('hotel-rooms', ['id' => $hotel->id]) }}" class="cat-overlay">
                             <h2>{{ $hotel->name }} <span class="pull-right">{{ $hotel->stars }}<i class="icon-star-1"></i></span></h2>
-                            <p>{{ $hotel->description }}</p>
+                            <p>{{ substr($hotel->description, 0, 180) }}</p>
                             <span class="box_cat_bt">Read more</span>
                             </a>
                             <div class="cat-img">
