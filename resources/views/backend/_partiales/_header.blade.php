@@ -31,6 +31,7 @@
                                         <a href="#">
                                             <div class="pull-left">
                                                 <img src="{{ asset('backend/images/logo.jpg') }}" class="img-circle" alt="User Image">
+                                                <span class="hidden-xs">{{ ucfirst(Auth::user()->nom) }}</span>
                                             </div>
                                             <h4>
                                                 Support Team

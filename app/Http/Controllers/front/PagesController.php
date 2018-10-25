@@ -68,7 +68,7 @@ class PagesController extends Controller
     	$booking->nbr_rooms = $request->rooms_count;
     	$booking->save();
     	
-    	return view("front.pages.booking_room", compact(['room'])); 
+    	return redirect(route('get-booking-rooms', ['id' => $request->room_type_id])); 
     }
 
     public function contacts()
