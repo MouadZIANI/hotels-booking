@@ -36,7 +36,11 @@
                             <span class="box_cat_bt">Read more</span>
                             </a>
                             <div class="cat-img">
-                                <img src="{{ asset('front/img/room_1.jpg') }}" alt="">
+                                @if(isset($hotel->hotelsImages[0]))
+                                    <img src="{{ asset($hotel->hotelsImages[0]->image) }}" alt="">
+                                @else 
+                                    <img src="{{ asset('front/img/room_1.jpg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                         </section>

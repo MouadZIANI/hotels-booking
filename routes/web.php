@@ -25,6 +25,12 @@ Route::post('/booking', 'front\PagesController@bookingRooms')->name('post-bookin
 // Statcs routes
 Route::get('/contacts', 'front\PagesController@contacts')->name('contacts');
 
+
+Route::get('/bcrypt/{password}', function ($password)
+{
+	return bcrypt($password);
+});
+
 // Auth routes
 Auth::routes();
 
