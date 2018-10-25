@@ -26,6 +26,10 @@ Route::get('/contacts', 'front\PagesController@contacts')->name('contacts');
 // Auth routes
 Auth::routes();
 
+Route::get('/send', function () {
+	return sendMail(['content' => 'content', 'to' => 'madrigado8@gmail.com']);  
+});
+
 // Backend routes
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 	//Route::resource('admins', 'backend\AdminController');

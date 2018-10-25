@@ -26,7 +26,7 @@
     <div class="bg_gray">
         <div class="container">
             <div class="row">
-                @foreach($hotels as $hotel)
+                @forelse($hotels as $hotel)
                     <div class="col-lg-4">
                         <section class="box_cat_wp">
                         <div class="box_cat cat-hover">
@@ -41,7 +41,9 @@
                         </div>
                         </section>
                     </div>
-                @endforeach()
+                @empty
+                    <h1 class="text-center">No Hotel Found</h1>
+                @endforelse
             </div><!-- End row -->
         </div><!-- End container -->
     </div>

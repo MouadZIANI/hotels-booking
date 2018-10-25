@@ -68,50 +68,80 @@
                     <input type="hidden" name="room_type_id" value="{{ $room->id }}">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('start_date') ? ' has-error' : '' }}">
                                 <label>Start date</label>
-                               <input class="date-pick form-control" data-date-format="yyyy-mm-dd" type="text" id="start_date" name="start_date" placeholder="Start date">
+                               <input class="date-pick form-control" value="{{ old('start_date') }}" data-date-format="yyyy-mm-dd" type="text" id="start_date" name="start_date" placeholder="Start date">
                                <span class="input-icon"><i class=" icon-calendar"></i></span>
+                               @if ($errors->has('start_date'))
+                                    <span class="help-block">
+                                        {{ $errors->first('start_date') }}
+                                    </span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div class="form-group">
-                                <label>Start date</label>
+                            <div class="form-group{{ $errors->has('end_date') ? ' has-error' : '' }}">
+                                <label>End date</label>
                                <input class="date-pick form-control" data-date-format="yyyy-mm-dd" type="text" id="end_date" name="end_date" placeholder="Check out">
                                <span class="input-icon"><i class=" icon-calendar"></i></span>
+                               @if ($errors->has('end_date'))
+                                    <span class="help-block">
+                                        {{ $errors->first('end_date') }}
+                                    </span>
+                                @endif
                            </div>
                         </div>
                     </div><!-- End row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                            <label>Rooms</label>
+                            <div class="form-group{{ $errors->has('rooms_count') ? ' has-error' : '' }}">
+                                <label>Rooms</label>
                                 <div class="qty-buttons">
                                     <input type="button" value="-" class="qtyminus" name="rooms_count">
                                     <input type="text" name="rooms_count" value="1" class="qty form-control" placeholder="0">
                                     <input type="button" value="+" class="qtyplus" name="rooms_count">
                                 </div>
+                                @if ($errors->has('rooms_count'))
+                                    <span class="help-block">
+                                        {{ $errors->first('rooms_count') }}
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div><!-- End row -->
                     
                     <div class="row">
                             <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('name_booking') ? ' has-error' : '' }}">
                                     <label>Name</label>
                                     <input type="text" class="form-control" name="name_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->name }}" disabled @endif() id="name_booking" placeholder="Name and Last name">
+                                    @if ($errors->has('name_booking'))
+                                        <span class="help-block">
+                                            {{ $errors->first('name_booking') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('email_booking') ? ' has-error' : '' }}">
                                     <label>Email</label>
                                     <input type="text" class="form-control" name="email_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->email }}" disabled @endif() id="email_booking" placeholder="Your email">
+                                    @if ($errors->has('rooms_count'))
+                                        <span class="help-block">
+                                            {{ $errors->first('email_booking') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('tel_booking') ? ' has-error' : '' }}">
                                     <label>Tel</label>
-                                    <input type="text" class="form-control" name="tel_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->tel }}" disabled @endif() id="email_booking" placeholder="Your Phone number">
+                                    <input type="text" class="form-control" name="tel_booking" @if(Auth::user() and Auth::user()->role == 'client') value="{{ Auth::user()->tel }}" disabled @endif() placeholder="Your Phone number">
+                                    @if ($errors->has('rooms_count'))
+                                        <span class="help-block">
+                                            {{ $errors->first('rooms_count') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">

@@ -22,11 +22,14 @@ class PagesController extends Controller
 
     public function searcheHotels(Request $request)
     {
-    	$hotels = Hotel::select("*")
-    					->where('etat', 1)
-    					->orWhere(['city_id' => $request->city, 'stars' => $request->stars, 'etat' => true])
-    					->orWhere(['zip_code' => $request->zipCode, 'stars' => $request->stars, 'etat' => true])
-    					->paginate(18);
+        $conditions = array('stars' => $request->stars, 'etat' => 1);
+        if(!empty($request->zipCode)) {
+            $conditions['zip_code'] = $request->zipCode;
+        } 
+        if(!empty($request->city)) {
+            $conditions['city_id'] = $request->city;
+        }
+        $hotels = Hotel::select("*")->where($conditions)->paginate(18);
 
     	return view("front.pages.searche_hotels", compact(['hotels'])); 
     }
@@ -48,9 +51,18 @@ class PagesController extends Controller
 
     public function bookingRooms(Request $request)
     {
-    	$password = time();
+        $password = time();
     	$client = User::where('email', $request->email_booking)->first();
     	if(!$client) {
+            $request->validate([
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                'nbr_rooms' => 'required|numeric',
+                'name_booking' => 'required|max:50|min:5',
+                'email_booking' => 'required|email|unique:users',
+                'tel_booking' => 'required|max:50|min:10'
+            ]);
+
 	    	$client = new User;
 	    	$client->name = $request->name_booking;
 	    	$client->email = $request->email_booking;
@@ -58,7 +70,13 @@ class PagesController extends Controller
 	    	$client->password = bcrypt($password);
 	    	$client->tel = $request->tel_booking;
 	    	$client->save();
-    	}
+    	} else {
+            $request->validate([
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                'nbr_rooms' => 'required|numeric'
+            ]);
+        }
 
     	$booking = new Booking;
     	$booking->client_id = $client->id;
@@ -67,7 +85,10 @@ class PagesController extends Controller
     	$booking->end_date = $request->end_date;
     	$booking->nbr_rooms = $request->rooms_count;
     	$booking->save();
-    	
+        $content = 'Your email : ' . $client->email . "\r\n";
+        $content = 'Your password : ' . $client->password_client . "\r\n";
+        sendMail(['content' => $content, 'to' => $client->email]);
+        
     	return redirect(route('get-booking-rooms', ['id' => $request->room_type_id])); 
     }
 
