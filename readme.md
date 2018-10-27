@@ -1,5 +1,3 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-
 Hotel Booking Website using Laravel 5.6
 
 To get the project up and running on your local machine, do the following. I assume you already know how to go about laravel, bower composer and npm, so i'll be brief
@@ -8,7 +6,7 @@ To get the project up and running on your local machine, do the following. I ass
 - Run composer install, to install dependencies
 - Run npm install to install npm dependencies
 - Edit the created .env file at the root of your project, to add database credentials, etc
-- For migrate the tables of database run this command php artisan migrate in your cmd 
+- For create the tables of database run this command php artisan migrate in your cmd 
 ```bash
 php artisan serve
 ```
