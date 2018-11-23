@@ -12,4 +12,4 @@ php artisan serve
 ```
 - visit the site at localhost:8000
 
-Created by <a href="http://facebook.com/mouad.ziani.romac">ROMAC</a> and Group SCRUM  ;)
+Created by <a href="http://facebook.com/mouad.ziani.romac">ROMAC</a> Group SCRUM  ;)
