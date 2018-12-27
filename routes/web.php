@@ -2,17 +2,6 @@
 use App\Hotel;
 use App\RoomType;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Front routes
 // Get
 Route::get('/', 'front\PagesController@index')->name('home');
@@ -33,18 +22,6 @@ Route::get('/bcrypt/{password}', function ($password)
 
 // Auth routes
 Auth::routes();
-
-Route::get('/insert', function () {
-	$rooms = RoomType::all();
-	foreach ($rooms as $key => $room) {
-		for ($i=4; $i >= 1; $i--) { 
-			DB::table('room_images')->insert(
-			    ['image' => "front/images/rooms/" . $i . ".jpg", 'room_type_id' => $room->id, 'created_at' => '2018-10-25 20:35:03', 'updated_at' => '2018-10-25 20:35:03']
-			);
-		}
-	}
-	
-});
 
 // Backend routes
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {

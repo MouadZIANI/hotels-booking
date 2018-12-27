@@ -22,8 +22,6 @@ class CreateHotelsTable extends Migration
             $table->text('adress');
             $table->text('description');
             $table->boolean('etat')->default(true);
-            $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }

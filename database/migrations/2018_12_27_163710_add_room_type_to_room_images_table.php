@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHotelsRooms extends Migration
+class AddRoomTypeToRoomImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateHotelsRooms extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('number');
-            $table->timestamps();
+        Schema::table('room_images', function (Blueprint $table) {
+            $table->integer('room_type_id')->unsigned()->nullable();
+            $table->foreign('room_type_id')->references('id')->on('room_types');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateHotelsRooms extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::table('room_images', function (Blueprint $table) {
+            //
+        });
     }
 }

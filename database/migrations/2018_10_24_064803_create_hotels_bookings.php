@@ -19,12 +19,8 @@ class CreateHotelsBookings extends Migration
             $table->date('end_date');
             $table->integer('nbr_rooms');
             $table->integer('etat')->default(0); // 0 => active, 1 => valide, -1 => annuler
-            
             $table->integer('client_id')->unsigned()->nullable();
             $table->foreign('client_id')->references('id')->on('users');
-            
-            $table->integer('room_type_id')->unsigned();
-            $table->foreign('room_type_id')->references('id')->on('room_types');
             $table->timestamps();
         });
     }
